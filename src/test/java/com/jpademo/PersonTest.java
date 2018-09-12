@@ -13,7 +13,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.jpademo.entity.Person;
-import com.jpademo.enums.Gender;
 
 public class PersonTest {
 	private EntityManagerFactory factory;
@@ -167,7 +166,7 @@ public class PersonTest {
 	}
 	
 	/**
-	 * 删除查询 对数据更改必须开启事务，不然无法更改
+	 * 删除查询 对数据更改必须开启事务，
 	 */
 	@Test
 	public void deleteQuery() {
