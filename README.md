@@ -58,7 +58,7 @@
 
 - 删除数据时只能对托管的对象进行删除	
 
-## 联系方式
+## 联系方式（Contact information）
 
 - Email: <l156572553@gmail.com>
 - QQ: 156572553
