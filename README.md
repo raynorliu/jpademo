@@ -24,8 +24,8 @@ JPA支持的2种传参方式：<br>
 
 
 ## 一些方法说明
-- EntityManagerFactory factory = Persistence.createEntityManagerFactory(String persistenceUnitName)---> 创建实体管理工厂
-	使用完毕后记得关闭工厂
+- 创建实体管理工厂,使用完毕后记得关闭工厂
+<code> EntityManagerFactory factory = Persistence.createEntityManagerFactory(String persistenceUnitName)</code>
 
 
 - EntityManager entityManager = factory.createEntityManager()--->通过工厂获取实体管理器
