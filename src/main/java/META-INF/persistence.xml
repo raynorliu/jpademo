@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+    <!-- 配置持久化单元 -->
+    <persistence-unit name="phoenix" transaction-type="RESOURCE_LOCAL">
+    	<!-- 设置属性 -->
+    	<properties>
+    		<!-- org.hibernate.dialect.MySQL5Dialect -->
+    		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+    		<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+    		<property name="hibernate.connection.username" value="admin"/>
+    		<property name="hibernate.connection.password" value="liugy"/>
+    		<property name="hibernate.connection.url" value="jdbc:mysql://101.132.78.225:3306/hiber?useUnicode=true&amp;characterEncoding=UTF-8"/>
+    		<property name="hibernate.max_fetch_depth" value="3"/>
+    		<!--自动输出schema创建DDL语句 value的值可以是 create-drop / create / update  
+值得注意的是create-drop他会在SESSION关闭后删除所有表开启式再创建。 -->
+    		<property name="hibernate.hbm2ddl.auto" value="update"/>
+    		<property name="hibernate.show_sql" value="true"/>
+    		<property name="hibernate.format_sql" value="true"/>
+    	</properties>
+    </persistence-unit>
+</persistence>
