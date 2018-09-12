@@ -9,13 +9,13 @@
 
 ## 特点
 #### JPA中实体的四种状态
-> new 新建状态
-> managed 托管状态
-> > - 在事务关闭前查找到的对象属于托管状态
-> > - 此时对对象进行修改，会将修改后的数据存入jdbc的批处理中，修改后的值会在事务提交时同步到数据库中，不需要求调用其他方法对对象进行操作
-> 游离(脱管)状态
+* new 新建状态
+* managed 托管状态
+  - 在事务关闭前查找到的对象属于托管状态
+  - 此时对对象进行修改，会将修改后的数据存入jdbc的批处理中，修改后的值会在事务提交时同步到数据库中，不需要求调用其他方法对对象进行操作
+* 游离(脱管)状态
 	- 对游离状态的实体更新必须使用实体管理器持久化API
-> 删除状态
+* 删除状态
 
 #### JPA支持的2种传参方式：
 > - 1.使用占位符方式----> ?1 <br>
@@ -27,18 +27,17 @@
 
 
 ## 一些方法说明
-- 创建实体管理工厂,使用完毕后记得关闭工厂
 
-<code> EntityManagerFactory factory = Persistence.createEntityManagerFactory(String persistenceUnitName)</code>
+#### 创建实体管理工厂,使用完毕后记得关闭工厂
+> <code>EntityManagerFactory factory = Persistence.createEntityManagerFactory(String persistenceUnitName)</code>
+
+#### 通过工厂获取实体管理器使用完毕后记得关闭管理器
+EntityManager entityManager = factory.createEntityManager()
 
 
-- EntityManager entityManager = factory.createEntityManager()--->通过工厂获取实体管理器
-	使用完毕后记得关闭管理器
-
-
-- EntityManager.getReference(entityClass, primaryKey)
-	1.属于延迟加载，返回的是代理对象，只有真正访问里面的属性时才开始加载数据
-	2.注意：不要在session关闭后访问，session关闭后代理对象不存在了
+#### EntityManager.getReference(entityClass, primaryKey)
+	* 属于延迟加载，返回的是代理对象，只有真正访问里面的属性时才开始加载数据
+	* 注意：不要在session关闭后访问，session关闭后代理对象不存在了
 	
 - EntityManager.save(entity)---> 保存新建
 
