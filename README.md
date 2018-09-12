@@ -1,12 +1,12 @@
 # Jpa 常用功能演示
 
 ## 项目简介
-没有继承框架的基础调用展示
+没有继承框架的基础调用展示<br>
 调用方法都在test目录下
 
 
 
-# 特点
+## 特点
 #### JPA中实体的四种状态
 > - 1.new 新建状态
 > - 2.managed 托管状态
@@ -25,7 +25,7 @@
 </pre>
 
 
-# 一些方法说明
+## 一些方法说明
 - 创建实体管理工厂,使用完毕后记得关闭工厂
 
 <code> EntityManagerFactory factory = Persistence.createEntityManagerFactory(String persistenceUnitName)</code>
@@ -57,18 +57,18 @@
 		query.setParameter(1,1L);
 		Person person = (Person) query.getSingleResult()---> 返回单个查询结果
 
-# 注意事项
+## 注意事项
 
 - 对数据进行修改操作必须开启事务，不然修改后的数据无法同步到数据库中
 
 - 删除数据时只能对托管的对象进行删除	
 
-# 联系方式（Contact information）
+## 联系方式（Contact information）
 
 - Email: <l156572553@gmail.com>
 - QQ: 156572553
 - Wechat: Aognob
 
-# 结束语
+## 结束语
 
 - 真心感谢志同道合的人, 这个真的很重要, 也希望你能一起参与!
