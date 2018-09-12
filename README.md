@@ -26,7 +26,7 @@
 	使用完毕后记得关闭工厂
 
 
---- EntityManager entityManager = factory.createEntityManager()--->通过工厂获取实体管理器
+- EntityManager entityManager = factory.createEntityManager()--->通过工厂获取实体管理器
 	使用完毕后记得关闭管理器
 
 
@@ -61,7 +61,7 @@
 ## 联系方式
 
 - Email: <l156572553@gmail.com>
-- QQ: 1656572553
+- QQ: 156572553
 - Wechat: Aognob
 
 ## 结束语
