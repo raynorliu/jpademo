@@ -16,8 +16,8 @@
 		对游离状态的实体更新必须使用实体管理器持久化API
 	4.删除状态
 
+> - JPA支持的2种传参方式：
 <pre>
-JPA支持的2种传参方式：<br>
 	1.使用占位符方式----> ?1 <br>
 	2.使用位参方式----> :name <br>
 </pre>
@@ -25,6 +25,7 @@ JPA支持的2种传参方式：<br>
 
 ## 一些方法说明
 - 创建实体管理工厂,使用完毕后记得关闭工厂
+
 <code> EntityManagerFactory factory = Persistence.createEntityManagerFactory(String persistenceUnitName)</code>
 
 
