@@ -173,7 +173,7 @@ public class PersonTest {
 		EntityManager entityManager = factory.createEntityManager();
 		entityManager.getTransaction().begin();
 		Query query = entityManager.createQuery("DELETE FROM Person p WHERE p.id = ?1");
-		query.setParameter(1,20L);
+		query.setParameter(1,19L);
 		int executeUpdate = query.executeUpdate();
 		System.out.println(executeUpdate);
 		entityManager.getTransaction().commit();

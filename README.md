@@ -46,6 +46,7 @@ EntityManager.getReference(entityClass, primaryKey);
 ```
 - 属于延迟加载，返回的是代理对象，只有真正访问里面的属性时才开始加载数据
 - 注意：不要在session关闭后访问，session关闭后代理对象不存在了
+- 查询的数据总是最新的数据
 
 #### 保存新建对象：
 ```java
