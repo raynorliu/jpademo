@@ -8,7 +8,7 @@
 
 
 ## 特点
-#### JPA中实体的四种状态
+#### JPA中实体的四种状态：
 * new 新建状态
 * managed 托管状态
   - 在事务关闭前查找到的对象属于托管状态
@@ -28,16 +28,17 @@
 
 ## 一些方法说明
 
-#### 创建实体管理工厂,使用完毕后记得关闭工厂
-> <code>EntityManagerFactory factory = Persistence.createEntityManagerFactory(String persistenceUnitName)</code>
+#### 创建实体管理工厂,使用完毕后记得关闭工厂：
+<code>EntityManagerFactory factory = Persistence.createEntityManagerFactory(String persistenceUnitName)</code>
 
 #### 通过工厂获取实体管理器使用完毕后记得关闭管理器
 EntityManager entityManager = factory.createEntityManager()
 
 
-#### EntityManager.getReference(entityClass, primaryKey)
-	* 属于延迟加载，返回的是代理对象，只有真正访问里面的属性时才开始加载数据
-	* 注意：不要在session关闭后访问，session关闭后代理对象不存在了
+#### 查找 延迟加载的方法：
+EntityManager.getReference(entityClass, primaryKey)
+- 属于延迟加载，返回的是代理对象，只有真正访问里面的属性时才开始加载数据
+- 注意：不要在session关闭后访问，session关闭后代理对象不存在了
 	
 - EntityManager.save(entity)---> 保存新建
 
