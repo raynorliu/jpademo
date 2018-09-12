@@ -7,11 +7,11 @@
     	<!-- 设置属性 -->
     	<properties>
     		<!-- org.hibernate.dialect.MySQL5Dialect -->
-    		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+    		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
     		<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
     		<property name="hibernate.connection.username" value="admin"/>
     		<property name="hibernate.connection.password" value="liugy"/>
-    		<property name="hibernate.connection.url" value="jdbc:mysql://101.132.78.225:3306/hiber?useUnicode=true&amp;characterEncoding=UTF-8"/>
+    		<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/hiber?useUnicode=true&amp;characterEncoding=UTF-8"/>
     		<property name="hibernate.max_fetch_depth" value="3"/>
     		<!--自动输出schema创建DDL语句 value的值可以是 create-drop / create / update  
 值得注意的是create-drop他会在SESSION关闭后删除所有表开启式再创建。 -->
