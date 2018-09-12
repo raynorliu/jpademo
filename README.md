@@ -18,12 +18,8 @@
 * 删除状态
 
 #### JPA支持的2种传参方式：
-> - 1.使用占位符方式----> ?1 <br>
-> - 2.使用位参方式----> :name <br>
-<pre>
-	1.使用占位符方式----> ?1 <br>
-	2.使用位参方式----> :name <br>
-</pre>
+- 使用占位符方式----> ?1
+- 使用位参方式----> :name 
 
 
 ## 一些方法说明
@@ -35,28 +31,37 @@
 EntityManager entityManager = factory.createEntityManager()
 
 
-#### 查找 延迟加载的方法：
+#### 查找对象：
+EntityManager.find(entityClass, primaryKey)
+
+#### 查找对象 延迟加载的方法：
 EntityManager.getReference(entityClass, primaryKey)
 - 属于延迟加载，返回的是代理对象，只有真正访问里面的属性时才开始加载数据
 - 注意：不要在session关闭后访问，session关闭后代理对象不存在了
+
+#### 保存新建对象：
+EntityManager.save(entity)
+
+#### 存储游离(脱管)状态的对象:
+EntityManager.merge(entity)
+
+#### 删除对象:
+EntityManager.remove(entity)
+
+#### Query查询返回列表：
+Query query = entityManager.createQuery("SELECT p FROM Person p")
+	List<Person> persons = query.getResultList()
 	
-- EntityManager.save(entity)---> 保存新建
+#### Query查询返回统计结果：
+Query query = entityManager.createQuery("SELECT count(*) FROM Person");
+	Long count = (Long) query.getSingleResult()
 
-- EntityManager.merge(entity)---> 存储游离(脱管)状态的对象
-
-- EntityManager.remove(entity)---> 删除对象
-
-- EntityManager.remove(entity)---> 删除对象
-
-- Query query = entityManager.createQuery("SELECT p FROM Person p")
-	List<Person> persons = query.getResultList()---> 返回列表
-	
-- Query query = entityManager.createQuery("SELECT count(*) FROM Person");
-	Long count = (Long) query.getSingleResult()---> 返回统计结果
-
-- Query query = entityManager.createQuery("SELECT p FROM Person p WHERE p.id = ?1");
-		query.setParameter(1,1L);
-		Person person = (Person) query.getSingleResult()---> 返回单个查询结果
+#### Query查询返回单个查询结果：
+```
+Query query = entityManager.createQuery("SELECT p FROM Person p WHERE p.id = ?1")
+query.setParameter(1,1L);
+Person person = (Person) query.getSingleResult()
+```
 
 ## 注意事项
 
