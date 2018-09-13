@@ -33,7 +33,7 @@ public class OrderItem {
 
 	// optional--->为ture时反映在数据库中该字段可以为空
 	@ManyToOne(cascade = { CascadeType.REFRESH, CascadeType.MERGE }, optional = false)
-	@JoinColumn(name = "id", columnDefinition = "COMMENT 'orders表主键'") // 添加关联字段
+	@JoinColumn(name = "order_id", columnDefinition = "varchar(32) COMMENT 'orders表主键'") // 添加关联字段
 	private Order order;
 
 	@Column(name = "price", nullable = false, columnDefinition = "decimal(10,2) COMMENT '商品价格' default 0.00")

@@ -35,6 +35,7 @@ public class PersonTest {
 	 */
 	@Test
 	public void save() {
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("wwx");
 		EntityManager entityManager = null;
 		try {
 			for (int i = 1; i <= 20; i++) {
@@ -53,6 +54,11 @@ public class PersonTest {
 			entityManager.close();
 		}
 		System.out.println("ok");
+	}
+	
+	public static void main(String[] args) {
+		PersonTest p =new PersonTest();
+		p.save();
 	}
 
 	/**

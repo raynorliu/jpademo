@@ -1,6 +1,8 @@
 package com.oneToMany.entity;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,6 +15,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+
 /**
  * 订单
  * 
@@ -24,8 +27,8 @@ import org.hibernate.annotations.GenericGenerator;
 public class Order {
 
 	@Id
-//	@GenericGenerator(name = "system-uuid", strategy = "uuid") // 生成32为UUID
-//	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid") // 生成32为UUID
+	@GeneratedValue(generator = "system-uuid")
 	@Column(name = "id", columnDefinition = "varchar(32) COMMENT '主键,自动生成'")
 	private String id;
 
@@ -34,7 +37,7 @@ public class Order {
 
 	//关联关系中谁定义了mappedBy谁就是关系被维护端
 	@OneToMany(cascade = { CascadeType.REFRESH, CascadeType.PERSIST }, mappedBy = "order")
-	private Set<OrderItem> orderItems;
+	private List<OrderItem> orderItems = new ArrayList<OrderItem>();
 
 	public String getId() {
 		return id;
@@ -52,11 +55,11 @@ public class Order {
 		this.totalCost = totalCost;
 	}
 
-	public Set<OrderItem> getOrderItems() {
+	public List<OrderItem> getOrderItems() {
 		return orderItems;
 	}
 
-	public void setOrderItems(Set<OrderItem> orderItems) {
+	public void setOrderItems(List<OrderItem> orderItems) {
 		this.orderItems = orderItems;
 	}
 
