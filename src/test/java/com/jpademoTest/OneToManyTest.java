@@ -1,11 +1,7 @@
-package com.oneToMany.entity;
+package com.jpademoTest;
 
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -15,13 +11,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.oneToMany.entity.Order;
+import com.oneToMany.entity.OrderItem;
+
 class OneToManyTest {
 
 	private EntityManagerFactory factory;
 
 	@Before
 	public void before() {
-		factory = Persistence.createEntityManagerFactory("phoenix");
+		factory = Persistence.createEntityManagerFactory("wwx");
 
 	}
 
@@ -44,12 +43,12 @@ class OneToManyTest {
 		Order order = new Order();
 		
 		OrderItem orderItem = new OrderItem();
-		orderItem.setProductName("苹果");
-		orderItem.setPrice(BigDecimal.valueOf(5.98f));
+		orderItem.setProductName("车厘子");
+		orderItem.setPrice(BigDecimal.valueOf(69.99f));
 		
 		OrderItem orderItem2 = new OrderItem();
-		orderItem2.setProductName("水蜜桃");
-		orderItem2.setPrice(BigDecimal.valueOf(9.98f));
+		orderItem2.setProductName("榴莲");
+		orderItem2.setPrice(BigDecimal.valueOf(199.99f));
 		
 		order.setTotalCost(orderItem.getPrice().add(orderItem2.getPrice()));
 		order.addOrderItem(orderItem);
@@ -61,9 +60,19 @@ class OneToManyTest {
 		factory.close();
 	}
 	
+	@Test
+	public void query() {
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("wwx");
+		EntityManager em = factory.createEntityManager();
+		Order orderItem = em.find(Order.class, "8a7efdbb65d1031d0165d10322930000");
+		System.out.println(orderItem);
+		em.close();
+		factory.close();
+	}
+	
 	public static void main(String[] args) {
 		OneToManyTest o =new OneToManyTest();
-		o.save();
+		o.query();
 	}
 
 }

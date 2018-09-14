@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Date;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,7 +13,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.Version;
@@ -25,6 +28,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.jpademo.enums.Gender;
+import com.oneToOne.entity.IDCard;
 
 @Entity
 @Table(name = "person")
@@ -45,6 +49,10 @@ public class Person {
 
 	@Column(name = "name", nullable = false, columnDefinition = "varchar(10) COMMENT '姓名'")
 	private String name;
+	
+	@OneToOne(optional = false, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "idCard_id")
+	private IDCard idCard;
 
 //	@Temporal(TemporalType.DATE)
 	@Column(name = "birthday", columnDefinition = "DATE COMMENT '出生日期'")
@@ -223,6 +231,14 @@ public class Person {
 				+ info + ", file=" + Arrays.toString(file) + ", imagepath=" + imagepath + ", createUser=" + createUser
 				+ ", gmtCreate=" + gmtCreate + ", modifiedUser=" + modifiedUser + ", gmtModified=" + gmtModified
 				+ ", version=" + version + ", remark=" + remark + ", delete=" + delete + "]";
+	}
+
+	public IDCard getIdCard() {
+		return idCard;
+	}
+
+	public void setIdCard(IDCard idCard) {
+		this.idCard = idCard;
 	}
 
 }

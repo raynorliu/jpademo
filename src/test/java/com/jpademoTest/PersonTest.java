@@ -1,4 +1,4 @@
-package com.jpademo;
+package com.jpademoTest;
 
 import java.util.Date;
 import java.util.List;

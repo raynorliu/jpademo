@@ -1,8 +1,7 @@
 package com.oneToMany.entity;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,7 +13,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
-
 
 /**
  * 订单
@@ -37,7 +35,7 @@ public class Order {
 
 	//关联关系中谁定义了mappedBy谁就是关系被维护端
 	@OneToMany(cascade = { CascadeType.REFRESH, CascadeType.PERSIST }, mappedBy = "order")
-	private List<OrderItem> orderItems = new ArrayList<OrderItem>();
+	private Set<OrderItem> orderItems = new HashSet<OrderItem>();
 
 	public String getId() {
 		return id;
@@ -55,21 +53,27 @@ public class Order {
 		this.totalCost = totalCost;
 	}
 
-	public List<OrderItem> getOrderItems() {
+	public Set<OrderItem> getOrderItems() {
 		return orderItems;
 	}
 
-	public void setOrderItems(List<OrderItem> orderItems) {
+	public void setOrderItems(Set<OrderItem> orderItems) {
 		this.orderItems = orderItems;
+	}
+
+	
+
+	/**
+	 * 把orderItem对象加入到orderItems集合中
+	 * @param orderItem
+	 */
+	public void addOrderItem(OrderItem orderItem) {
+		orderItem.setOrder(this);
+		this.orderItems.add(orderItem);
 	}
 
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", totalCost=" + totalCost + ", orderItems=" + orderItems + "]";
-	}
-
-	public void addOrderItem(OrderItem orderItem) {
-		orderItem.setOrder(this);
-		this.orderItems.add(orderItem);
 	}
 }

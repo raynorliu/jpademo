@@ -25,7 +25,7 @@ public class OrderItem {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", columnDefinition = "bigint COMMENT '主键,自动生成'")
+	@Column(name = "id", columnDefinition = "int(10) COMMENT '主键,自动生成'")
 	private Integer id;
 
 	@Column(name = "productName", nullable = false, columnDefinition = "varchar(20) COMMENT '商品名称'")
@@ -73,7 +73,9 @@ public class OrderItem {
 
 	@Override
 	public String toString() {
-		return "OrderItem [id=" + id + ", productName=" + productName + ", order=" + order + ", price=" + price + "]";
+		return "OrderItem [id=" + id + ", productName=" + productName + ", price=" + price + "]";
 	}
+
+	
 
 }
